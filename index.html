@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Pickles | Pickle Party!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="index.html">🥒 PICKLE PARTY!</a>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+    </div>
+  </nav>
+
+  <section class="shop">
+    <div class="product-art">
+      <div class="big-jar">🥒</div>
+      <div class="bubble">CRUNCH<br>TIME!</div>
+    </div>
+
+    <div class="product-info">
+      <span class="tag">THE ORIGINAL FAVOURITE</span>
+      <h1>The Pickle<br><span>Party Jar!</span></h1>
+      <p class="price">€8.99 <small>/ jar</small></p>
+      <p>Meet your new favourite snack. Packed with
+         tangy pickle flavour and plenty of crunch.
+         Perfect for snack time, burgers, and sandwiches.</p>
+
+      <label for="qty">Choose quantity:</label>
+      <div class="quantity">
+        <button onclick="changeQty(-1)">−</button>
+        <span id="qty">1</span>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+
+      <p class="total">Total: €<span id="total">8.99</span></p>
+      <button class="btn" onclick="addToCart()">
+        ADD TO CART 🛒
+      </button>
+      <p id="message" class="message"></p>
+      <a class="back-link" href="index.html">← Back to home</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Pickle Party! • Stay crunchy 🥒</footer>
+
+  <script>
+    let quantity = 1;
+    const price = 8.99;
+
+    function updateTotal() {
+      document.getElementById("qty").textContent = quantity;
+      document.getElementById("total").textContent =
+        (quantity * price).toFixed(2);
+    }
+
+    function changeQty(amount) {
+      quantity = Math.max(1, Math.min(99, quantity + amount));
+      updateTotal();
+    }
+
+    function addToCart() {
+      document.getElementById("message").textContent =
+        "🥒 " + quantity + " jar(s) added! Total: €" +
+        (quantity * price).toFixed(2) +
+        ". Connect a checkout service to complete your order.";
+    }
+  </script>
+</body>
+</html>
